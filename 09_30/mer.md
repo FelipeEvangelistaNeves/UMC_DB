@@ -12,8 +12,8 @@ Uma locadora precisa cadastrar seus clientes e veículos e registrar cada locaç
 
 ```mermaid
 erDiagram
-	CLIENTES ||--o{ LOCACOES : realiza
-	VEICULOS ||--o{ LOCACOES : aparece_em
+	CLIENTES ||--o{ LOCACOES : "1:N realiza"
+	VEICULOS ||--o{ LOCACOES : "1:N aparece em"
 
 	CLIENTES {
 		int id_cliente PK
@@ -52,3 +52,13 @@ erDiagram
 - A entidade **LOCACOES** conecta CLIENTES e VEICULOS. Por isso, as chaves estrangeiras ficam em LOCACOES.
 
 Em resumo, CLIENTES e VEICULOS têm relacionamentos de um para muitos (1:N) com LOCACOES.
+
+## Do MER para o SQL
+
+Com base nas entidades e nos relacionamentos do MER, podemos criar o código SQL das tabelas, definindo suas chaves primárias (PK) e, quando necessário, suas chaves estrangeiras (FK).
+
+> **Importante:** o relacionamento pode ser representado no modelo sem a criação de uma chave estrangeira física no banco de dados. Porém, sem a FK, o próprio banco não verifica automaticamente se os registros relacionados existem. Por isso, seu uso é recomendado para manter a integridade dos dados.
+
+## Ferramenta: dbdesigner.net
+
+O [dbdesigner.net](https://www.dbdesigner.net/) é uma ferramenta online para criar diagramas de banco de dados. Nela, é possível desenhar tabelas, definir atributos e chaves, estabelecer relacionamentos e gerar o código SQL correspondente. Revise o código gerado para garantir que ele seja compatível com o banco de dados utilizado.
